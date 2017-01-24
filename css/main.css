@@ -1,0 +1,16 @@
+body {
+  padding: 5px 120px;
+  overflow: scroll;
+}
+
+.page-header {
+  margin-top: 20px;
+}
+
+.row-divider {
+  margin-top: 10px;
+}
+
+#controls textarea {
+  font-size: 12px;
+}
