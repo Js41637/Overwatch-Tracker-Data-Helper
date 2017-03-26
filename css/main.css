@@ -14,3 +14,12 @@ body {
 #controls textarea {
   font-size: 12px;
 }
+
+.reloadbtn {
+  float: right;
+  cursor: pointer;
+}
+
+.reloadbtn:hover {
+  text-decoration: underline;
+}

@@ -25,7 +25,21 @@ OWI.controller('MainCtrl', function() {
     let itemName = `${name} (${quality} ${type})`
     this.parsedData[hero].items[event].push(itemName)
     this.newItem.name = '' // reset item name on page
-    updateRawData()
+    this.updateRawData()
+  }
+
+  const names = {
+    type: 'types',
+    quality: 'qualities'
+  }
+
+  this.selectNextOption = ({ keyCode }, option) => {
+    var num = keyCode == 40 ? 1 : keyCode == 38 ? -1 : undefined
+    if (!num) return
+    var currentOption = this[names[option]]
+    var currentIndex = currentOption.indexOf(this.newItem[option])
+    var nextItem = currentIndex + num > currentOption.length - 1 ? 0 : currentIndex + num < 0 ? currentOption.length - 1 : currentIndex + num
+    this.newItem[option] = currentOption[nextItem]
   }
 
   this.selectNextHero = () => {
@@ -61,16 +75,16 @@ OWI.controller('MainCtrl', function() {
     })
   }
 
-  const updateRawData = () => {
+  this.updateRawData = () => {
     var out = ""
     this.parsedData.forEach(hero => {
       out += `Cosmetics for ${hero.name}\n`
       Object.keys(hero.items).forEach(group => {
-        out += `\t${group}\n`
+        out += `\t${group} (${hero.items[group].length} items)\n`
         out += hero.items[group].map(item => `\t\t${item}\n`).join('')
       })
       out += '\n'
     })
-    this.rawData = out
+    this.rawData = out.replace(/\n$/, '')
   }
 })

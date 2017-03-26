@@ -15,7 +15,7 @@
   <div class="row" id="controls">
     <div class="col-lg-7">
       <div class="form-group">
-        <label>Raw Data</label>
+        <label>Raw Data</label> <span class="reloadbtn" ng-click="$ctrl.updateRawData()">Reload</span>
         <textarea class="form-control" rows="35" ng-change="$ctrl.onChange()" ng-model="$ctrl.rawData"></textarea>
       </div>
     </div>
@@ -74,7 +74,7 @@
           <label>Select Item Type</label>
           <div class="forum-group">
             <div class="btn-group" uib-dropdown>
-              <button ng-disabled="!$ctrl.rawData" id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle  style="min-width:120px">
+              <button ng-disabled="!$ctrl.rawData" id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle  style="min-width:120px" ng-keyup="$ctrl.selectNextOption($event, 'type')">
                 {{$ctrl.newItem.type || 'Select Type'}} <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
@@ -87,7 +87,7 @@
           <label>Select Item Quality</label>
           <div class="forum-group">
             <div class="btn-group" uib-dropdown>
-              <button ng-disabled="!$ctrl.rawData" id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
+              <button ng-disabled="!$ctrl.rawData" id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-keyup="$ctrl.selectNextOption($event, 'quality')">
                 {{$ctrl.newItem.quality || 'Select Quality'}} <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
@@ -99,7 +99,7 @@
         <div class="col-md-6">
           <label>Name of the Item</label>
           <div class="input-group">
-            <input ng-disabled="!$ctrl.rawData" type="text" class="form-control" ng-model="$ctrl.newItem.name" placeholder="Name of Item">
+            <input ng-disabled="!$ctrl.rawData" type="text" class="form-control" ng-model="$ctrl.newItem.name" placeholder="Name of Item" ng-keyup="$event.keyCode == 13 && $ctrl.addItem()">
             <span class="input-group-btn">
               <button ng-disabled="!$ctrl.canAddItem()" class="btn btn-primary" type="button" ng-click="$ctrl.addItem()">Add Item</button>
             </span>
