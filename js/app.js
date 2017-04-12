@@ -49,8 +49,8 @@ OWI.controller('MainCtrl', function() {
   }
 
 
-  this.selectNextOption = ({ keyCode }, option, ignore) => {
-    var num = keyCode == 40 ? 1 : keyCode == 38 ? -1 : ignore ? 1 : undefined
+  this.selectNextOption = ({ keyCode }, option) => {
+    var num = keyCode == 40 ? 1 : keyCode == 38 ? -1 : undefined
     if (!num) return
     var currentOption = this[names[option]]
     var currentIndex = currentOption.indexOf(this.newItem[option])
@@ -59,7 +59,17 @@ OWI.controller('MainCtrl', function() {
   }
 
   this.selectNextHero = () => {
-    this.selectNextOption({}, 'hero', true)
+    this.selectNextOption({ keyCode: 40 }, 'hero')
+  }
+
+  this.onInputEnter = ({ keyCode }) => {
+    if (keyCode == 13) {
+      this.addItem() 
+      return
+    }
+    var num = keyCode == 39 ? 40 : keyCode == 37 ? 38 : undefined
+    if (!num) return
+    this.selectNextOption({ keyCode: num }, 'hero')
   }
 
   const itemGroupRegex = /\t(.+)(\n\t{2}.+)*/g

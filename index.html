@@ -99,7 +99,7 @@
         <div class="col-md-6">
           <label>Name of the Item</label>
           <div class="input-group">
-            <input ng-disabled="!$ctrl.rawData" type="text" class="form-control" ng-model="$ctrl.newItem.name" placeholder="Name of Item" ng-keydown="$event.keyCode == 13 && $ctrl.addItem()">
+            <input ng-disabled="!$ctrl.rawData" type="text" class="form-control" ng-model="$ctrl.newItem.name" placeholder="Name of Item" ng-keydown="$ctrl.onInputEnter($event)">
             <span class="input-group-btn">
               <button ng-disabled="!$ctrl.canAddItem()" class="btn btn-primary" type="button" ng-click="$ctrl.addItem()">Add Item</button>
             </span>
