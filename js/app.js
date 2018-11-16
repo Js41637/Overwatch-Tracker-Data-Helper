@@ -5,9 +5,9 @@ OWI.config(['$compileProvider', function($compileProvider) {
 }])
 
 OWI.controller('MainCtrl', function() {
-  this.types = ["PlayerIcon", "Skin", "Emote", "Spray", "VoiceLine", "HighlightIntro", "Pose"]
+  this.types = ["Icon", "Skin", "Emote", "Spray", "VoiceLine", "HighlightIntro", "VictoryPose"]
   this.qualities = ["Common", "Rare", "Epic", "Legendary"]
-  this.heroes = [ 'Ana', 'Bastion', 'D.Va', 'Doomfist', 'Genji', 'Hanzo', 'Junkrat', 'Lúcio', 'McCree', 'Mei', 'Mercy', 'Moira', 'Orisa', 'Pharah', 'Reaper', 'Reinhardt', 'Roadhog', 'Soldier: 76', 'Sombra', 'Symmetra', 'Torbjörn', 'Tracer', 'Widowmaker', 'Winston', 'Zarya', 'Zenyatta' ]
+  this.heroes = [ 'Ana', 'Ashe', 'Bastion', 'Brigitte', 'D.Va', 'Doomfist', 'Genji', 'Hanzo', 'Junkrat', 'Lúcio', 'McCree', 'Mei', 'Mercy', 'Moira', 'Orisa', 'Pharah', 'Reaper', 'Reinhardt', 'Roadhog', 'Soldier: 76', 'Sombra', 'Symmetra', 'Torbjörn', 'Tracer', 'Widowmaker', 'Winston', 'Zarya', 'Zenyatta' ]
   this.rawData = ''
   this.newEvents = []
   this.events = ['SUMMER_GAMES', 'HALLOWEEN', 'WINTER_WONDERLAND', 'LUNAR_NEW_YEAR', 'UPRISING', 'ANNIVERSARY']
